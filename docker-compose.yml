@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    container_name: node-app-distribuida
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+
+      # Base de datos 1: Usuarios
+      - DB1_HOST=mysql-distribuida.alwaysdata.net
+      - DB1_USER=409262
+      - DB1_PASSWORD=papiHERMOSO19
+      - DB1_NAME=distribuida_base1
+
+      # Base de datos 2: Contactos
+      - DB2_HOST=mysql-distribuida.alwaysdata.net
+      - DB2_USER=409262
+      - DB2_PASSWORD=papiHERMOSO19
+      - DB2_NAME=distribuida_contactosdb
+
+      # Base de datos 3: Actividades
+      - DB3_HOST=mysql-distribuida.alwaysdata.net
+      - DB3_USER=409262
+      - DB3_PASSWORD=papiHERMOSO19
+      - DB3_NAME=distribuida_actividaddb
+    restart: unless-stopped
